@@ -1,5 +1,5 @@
 pipeline {
-     agent {label 'GRADLE JDK11 PY3 NVM'} 
+     agent {label 'GRADLE && JDK11 && PY3 && NVM'} 
      stages {
          stage('clone') { 
              steps {
