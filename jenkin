@@ -1,0 +1,16 @@
+pipeline {
+     agent {label 'GRADLE JDK11 PY3 NVM'} 
+     stages {
+         stage('clone') { 
+             steps {
+                 git url:'https://github.com/Manipavan98/shopizer.git' , branch : 'SPRINT_1_REL' 
+             }
+         }
+         stage('install') { 
+             steps {
+                 sh 'mvn package'
+             }
+         }
+     }
+ }
+
