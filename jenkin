@@ -1,9 +1,12 @@
 pipeline {
-     agent {label 'GRADLE JDK11 PY3 NVM'} 
-     stages {
-         stage('clone') { 
-             steps {
-                 git url:'https://github.com/Manipavan98/shopizer.git' , branch : 'SPRINT_1_REL' 
+     agent {label 'jdk11 && mvn '} 
+     triggers {
+        pollSCM('* * * * *')
+     }
+         stages {
+             stage('clone') { 
+                 steps {
+                    git url:'https://github.com/nithya-kalyani781/shopizer.git' , branch : 'develop' 
              }
          }
          stage('install') { 
@@ -11,6 +14,5 @@ pipeline {
                  sh 'mvn package'
              }
          }
-     }
- }
-
+   }
+}
