@@ -1,12 +1,12 @@
 pipeline {
      agent {label 'jdk11 && mvn '} 
      triggers {
-        pollSCM('* * * * *')
+        cron('30 17 * * *')
      }
          stages {
              stage('clone') { 
                  steps {
-                    git url:'https://github.com/nithya-kalyani781/shopizer.git' , branch : 'develop' 
+                    git url:'https://github.com/nithya-kalyani781/shopizer.git' , branch : 'release' 
              }
          }
          stage('install') { 
