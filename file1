@@ -1,0 +1,18 @@
+pipeline {
+     agent {label 'jdk11 && mvn' }
+     parameters {
+         choice(name:'BRANCH_TO_BUILD',choices:['master','rel_1'],description:'coose the branch')
+     }
+     stages {
+         stage('clone') { 
+             steps {
+                 git url:'https://github.com/nithya-kalyani781/shopizer.git' , branch : '${params.BRANCH_TO_BUILD}' 
+             }
+         }
+         stage('install') { 
+             steps {
+                 sh 'mvn package'
+             }
+         }
+     }
+}
